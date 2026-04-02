@@ -9,23 +9,19 @@ class ActionStack:
         self.items: list[str] = []
 
     def push(self, action: str) -> None:
-        """Add an action to the top of the stack."""
         self.items.append(action)
 
     def pop(self) -> str | None:
-        """Remove and return the top action, or None if empty."""
         if self.is_empty():
             return None
         return self.items.pop()
 
     def peek(self) -> str | None:
-        """Return the top action without removing it, or None if empty."""
         if self.is_empty():
             return None
         return self.items[-1]
 
     def is_empty(self) -> bool:
-        """Return True if the stack has no actions."""
         return len(self.items) == 0
 
 
@@ -36,28 +32,23 @@ class RequestQueue:
         self.items: deque[str] = deque()
 
     def enqueue(self, name: str) -> None:
-        """Add a citizen name to the back of the queue."""
         self.items.append(name)
 
     def dequeue(self) -> str | None:
-        """Remove and return the front citizen, or None if empty."""
         if self.is_empty():
             return None
         return self.items.popleft()
 
     def peek(self) -> str | None:
-        """Return the front citizen without removing it, or None if empty."""
         if self.is_empty():
             return None
         return self.items[0]
 
     def is_empty(self) -> bool:
-        """Return True if the queue has no waiting citizens."""
         return len(self.items) == 0
 
 
 def is_note_balanced(note: str) -> bool:
-    """Return True if (), [], and {} are balanced correctly in a note."""
     stack: list[str] = []
     pairs = {')': '(', ']': '[', '}': '{'}
 
@@ -73,7 +64,6 @@ def is_note_balanced(note: str) -> bool:
 
 
 def process_request_line(citizens: list[str]) -> list[str]:
-    """Return citizens in the order they are served."""
     queue = RequestQueue()
 
     for person in citizens:
@@ -87,7 +77,6 @@ def process_request_line(citizens: list[str]) -> list[str]:
 
 
 def undo_recent_actions(actions: list[str], undo_count: int) -> list[str]:
-    """Optional stretch: remove the most recent undo_count actions."""
     stack = ActionStack()
 
     for action in actions:
@@ -98,5 +87,4 @@ def undo_recent_actions(actions: list[str], undo_count: int) -> list[str]:
             break
         stack.pop()
 
-    # return remaining actions in original order
     return stack.items.copy()
