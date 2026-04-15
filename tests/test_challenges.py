@@ -2,7 +2,7 @@ from __future__ import annotations
 from collections import deque
 
 # If test_challenges.py has this:
-from src.challenges import ...   # ← could be wrong
+from challenges import ActionStack, RequestQueue, is_note_balanced, process_request_line, undo_recent_actions
 from challenges import ...       # ← this is correct when pythonpath = src
 class ActionStack:
     """Stack of recent help-center actions using a Python list."""
