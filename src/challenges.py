@@ -87,4 +87,4 @@ def undo_recent_actions(actions: list[str], undo_count: int) -> list[str]:
             break
         stack.pop()
 
-    return stack.items.copy() fix the code and add those inn this code
+    return stack.items.copy()
